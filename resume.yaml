@@ -1,0 +1,82 @@
+basics:
+  name: Harsha Vardhini Viyyuri
+  label: Software Engineer
+  email: harshaviyyuri1705@gmail.com
+  phone: "+91 96668 43989"
+  profiles:
+    - network: GitHub
+      url: https://github.com/harshaviyyuri
+    - network: LinkedIn
+      url: https://www.linkedin.com/in/harshaviyyuri/
+  summary: "Motivated and analytical Computer Science graduate passionate about Artificial Intelligence and Data Science. Keen to contribute to impactful Machine Learning and NLP projects while enhancing my technical expertise in a dynamic, forward-thinking environment."
+
+education:
+  - institution: Bonam Venkata Chalamayya Institute of Technology and Science (JNTUK)
+    area: Computer Science & Engineering
+    studyType: B.Tech
+    startDate: "2019-01-01"
+    endDate: "2023-05-01"
+    gpa: 6.5
+    courses: []
+  - institution: Aditya Junior College, Amalapuram
+    area: "Class XII"
+    studyType: Intermediate
+    startDate: "2017-00-01"
+    endDate: "2019-00-01"
+    gpa: 8.83
+    courses: []
+  - institution: G R Mariyappan Sir C V Raman E.M School
+    area: "Class X"
+    studyType: SSC
+    startDate: "2016-00-01"
+    endDate: "2017-00-01"
+    gpa: 9.3
+    courses: []
+
+skills:
+  - name: Languages
+    level: Master
+    keywords:
+      - Python
+      - HTML
+      - CSS
+      - XML
+  - name: Tools & Platforms
+    level: Master
+    keywords:
+      - VS Code
+      - Git
+  - name: Data Science Skills
+    level: Master
+    keywords:
+      - Data Cleaning
+      - Structuring
+      - Data Visualization
+  - name: ML & AI
+    level: Master
+    keywords:
+      - Supervised Learning
+      - Deep Learning
+      - NLP
+  - name: Libraries/Frameworks
+    level: Master
+    keywords:
+      - Scikit-learn
+      - TensorFlow
+      - PyTorch
+
+work:
+  - company: Lyros Technologies Pvt.
+    position: Software Engineer
+    startDate: "2025-04-01"
+    summary: "Trained on machine learning, deep learning, natural language processing (NLP), data visualization, and data cleaning and preprocessing techniques."
+    highlights: []
+
+projects:
+  - name: Drug Recommendation System using Machine Learning
+    description: "Built a machine learning model to support healthcare providers in selecting optimal drugs based on patient data. Processed and cleaned drug usage datasets for predictive analysis. Implemented supervised ML algorithms for intelligent recommendations. Reduced potential side effects and improved prescription accuracy."
+    url: https://github.com/harshaviyyuri/drug-recommendation
+    keywords:
+      - Machine Learning
+      - Python
+      - Scikit-learn
