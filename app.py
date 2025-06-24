@@ -71,7 +71,7 @@ st.sidebar.markdown("[🔗 GitHub](https://github.com/harshaviyyuri)")
 st.sidebar.markdown("[🔗 LinkedIn](https://www.linkedin.com/in/harshaviyyuri/)")
 
 # Tabs
-about_me_tab, education_tab, skills_tab, projects_tab, experience_tab, contact_tab, twitter_sentiment_tab = st.tabs(["About Me", "Education", "Skills", "Projects", "Experience", "Contact", "Twitter Sentiment Analysis"])
+about_me_tab, education_tab, skills_tab, projects_tab, experience_tab, contact_tab = st.tabs(["About Me", "Education", "Skills", "Projects", "Experience", "Contact"])
 
 # Experience Tab
 with experience_tab:
@@ -85,38 +85,7 @@ with experience_tab:
     st.markdown("**End Date:** Present")
     st.markdown("**Location:** Remote")
 
-    experience_entries = []
 
-    def add_experience():
-        company_name = st.text_input("Company Name", key="experience_company_name")
-        job_title = st.text_input("Job Title", key="experience_job_title")
-        description = st.text_area("Description of Responsibilities", key="experience_description")
-        start_date = st.date_input("Start Date", key="experience_start_date")
-        end_date = st.date_input("End Date", key="experience_end_date")
-        location = st.text_input("Location", key="experience_location")
-
-        if st.button("Add Experience"):
-            experience = {
-                "company_name": company_name,
-                "job_title": job_title,
-                "description": description,
-                "start_date": start_date,
-                "end_date": end_date,
-                "location": location
-            }
-            experience_entries.append(experience)
-            st.success("Experience added successfully!")
-
-    add_experience()
-
-    if experience_entries:
-        for experience in experience_entries:
-            st.subheader(experience["job_title"])
-            st.markdown(f"**Company:** {experience['company_name']}")
-            st.markdown(f"**Description:** {experience['description']}")
-            st.markdown(f"**Start Date:** {experience['start_date']}")
-            st.markdown(f"**End Date:** {experience['end_date']}")
-            st.markdown(f"**Location:** {experience['location']}")
 
 with about_me_tab:
     st.header("About Me 🙋‍♀️")
@@ -206,106 +175,87 @@ with skills_tab:
 with projects_tab:
     st.header("📂 Projects")
 
-    projects = [
-        {
-            "name": "Drug Recommendation System using Machine Learning",
-            "description": "Aimed at improving prescription accuracy and minimizing adverse drug reactions, this project leverages machine learning to provide data-driven drug recommendations to healthcare providers. It addresses the critical need for personalized medicine by considering patient-specific factors.",
-            "technologies": "Python, Scikit-learn, Pandas, NumPy, Matplotlib and Seaborn",
-            "start_date": "2022-01-01",
-            "end_date": "2022-06-30",
-            "repo_link": "https://github.com/harshaviyyuri/drug-recommendation",
-        },
-        {
-            "name": "Twitter Sentiment Analysis",
-            "description": "Developed a Streamlit application to analyze the sentiment of tweets for a given query. Utilized the Transformers library for sentiment analysis and the Tweepy library for fetching tweets.",
-            "technologies": "Python, Streamlit, Transformers, Tweepy, NLTK",
-            "start_date": "2024-01-01",
-            "end_date": "2024-06-30",
-            "repo_link": "https://github.com/harshaviyyuri/twitter-sentiment-analysis",
-        },
-        {
-            "name": "Another Project",
-            "description": "Another project description.",
-            "technologies": "Python, Streamlit",
-            "start_date": "2023-01-01",
-            "end_date": "2023-06-30",
-            "repo_link": "https://github.com/harshaviyyuri/another-project",
-        }
-    ]
-
-    def get_sentiment_for_project(project_name):
-        query = project_name + " project"
-        sentiment_results = analyze_twitter_sentiment(query, num_tweets=50)
-        return sentiment_results
-
-
-    
-
-    if projects:
-        for project in projects:
-            st.subheader(project["name"])
-            st.markdown(f"**Description:** {project['description']}")
-            st.markdown(f"**Technologies Used:** {project['technologies']}")
-            st.markdown(f"**Start Date:** {project['start_date']}")
-            st.markdown(f"**End Date:** {project['end_date']}")
-            st.markdown(f"[GitHub Repository]({project['repo_link']})")
-
-            # Get sentiment analysis results
-            if project["name"] == "Twitter Sentiment Analysis":
-                sentiment_results = get_sentiment_for_project(project["name"])
-
-                if "error" in sentiment_results:
-                    st.error(sentiment_results["error"])
-                else:
-                    # Display sentiment distribution
-                    st.write("Sentiment Distribution:")
-                    st.write(f"Positive: {sentiment_results['sentiment_distribution']['positive']:.2f}")
-                    st.write(f"Negative: {sentiment_results['sentiment_distribution']['negative']:.2f}")
-                    st.write(f"Neutral: {sentiment_results['sentiment_distribution']['neutral']:.2f}")
-
-                    # Display key themes
-                    st.write("Key Themes:")
-                    st.write(sentiment_results["themes"])
-
-    # st.subheader("Drug Recommendation System using Machine Learning")
-    # st.markdown("Aimed at improving prescription accuracy and minimizing adverse drug reactions, this project leverages machine learning to provide data-driven drug recommendations to healthcare providers. It addresses the critical need for personalized medicine by considering patient-specific factors.")
+    # --- Project 1: Drug Recommendation System ---
+    st.subheader("Drug Recommendation System using Machine Learning")
+    st.markdown("**Description:** Aimed at improving prescription accuracy and minimizing adverse drug reactions, this project leverages machine learning to provide data-driven drug recommendations to healthcare providers. It addresses the critical need for personalized medicine by considering patient-specific factors.")
 
     st.markdown("**Problem:**")
-    st.markdown("  *  High incidence of Adverse Drug Reactions (ADRs) leading to patient morbidity and mortality.")
-    st.markdown("  *  Suboptimal prescription accuracy due to the complexity of drug interactions and patient-specific conditions.")
-    st.markdown("  *  Lack of readily available tools for personalized drug recommendations at the point of care.")
+    st.markdown("""
+    * High incidence of Adverse Drug Reactions (ADRs) leading to patient morbidity and mortality.
+    * Suboptimal prescription accuracy due to the complexity of drug interactions and patient-specific conditions.
+    * Lack of readily available tools for personalized drug recommendations at the point of care.
+    """)
 
     st.markdown("**Solution:**")
-    st.markdown("  *  Developed a machine learning model using Python and Scikit-learn to predict the most suitable drug for a given patient based on their medical history, symptoms, and other relevant factors.")
-    st.markdown("  *  Employed the Random Forest Classifier algorithm, known for its robustness and ability to handle complex datasets with high dimensionality.")
-    st.markdown("  *  Implemented data preprocessing techniques, including feature engineering and data cleaning, to ensure data quality and model accuracy.")
-    st.markdown("  *  Integrated emoji-based data visualization to represent drug efficacy and potential side effects, enhancing user understanding and engagement for healthcare professionals.")
+    st.markdown("""
+    * Developed a machine learning model using Python and Scikit-learn to predict the most suitable drug for a given patient based on their medical history and symptoms.
+    * Used Random Forest Classifier for robustness in handling complex, high-dimensional datasets.
+    * Performed data cleaning and feature engineering for accuracy.
+    * Introduced emoji-based visualizations to represent drug efficacy and side effects.
+    """)
 
     st.markdown("**Key Features:**")
-    st.markdown("  *  **Patient-Specific Recommendations:** The model considers individual patient characteristics to provide tailored drug suggestions.")
-    st.markdown("  *  **Adverse Reaction Prediction:** The system predicts the likelihood of adverse reactions based on the patient's profile and the drug's known side effects.")
-    st.markdown("  *  **Emoji-Based Visualization:** Emojis are used to visually represent drug efficacy (e.g., 👍 for effective, 👎 for ineffective) and side effects (e.g., 🤕 for headache, 😴 for drowsiness), making the information more accessible and intuitive.")
-    st.markdown("  *  **User-Friendly Interface:** A simple and intuitive interface allows healthcare providers to easily input patient data and receive drug recommendations.")
+    st.markdown("""
+    * **Patient-Specific Recommendations:** Tailored drug suggestions using patient data.
+    * **Adverse Reaction Prediction:** Predicts likelihood of side effects based on known reactions.
+    * **Emoji-Based Visualization:** Uses emojis like 👍, 👎, 🤕, 😴 for intuitive visual feedback.
+    * **User-Friendly Interface:** Simple UI for healthcare providers to input data and receive suggestions.
+    """)
 
     st.markdown("**Technologies Used:**")
-    st.markdown("  *  Python")
-    st.markdown("  *  Scikit-learn (Random Forest Classifier)")
-    st.markdown("  *  Pandas (Data manipulation and analysis)")
-    st.markdown("  *  NumPy (Numerical computing)")
-    st.markdown("  *  Matplotlib and Seaborn (Data visualization)")
+    st.markdown("""
+    * Python  
+    * Scikit-learn (Random Forest Classifier)  
+    * Pandas, NumPy  
+    * Matplotlib, Seaborn
+    """)
 
     st.markdown("**Results:**")
-    st.markdown("  *  Achieved an accuracy of 85% on the test dataset, demonstrating the model's ability to accurately predict appropriate drug recommendations.")
-    st.markdown("  *  Improved model performance by incorporating additional patient data (e.g., lab results, genetic information) and feature engineering techniques.")
-    st.markdown("  *  Emoji-based data visualization significantly improved user understanding and engagement, as reported by healthcare professionals during user testing.")
+    st.markdown("""
+    * 85% model accuracy on test data.
+    * Improved performance through feature engineering and data enrichment.
+    * Emoji visualization improved user comprehension.
+    """)
 
     st.markdown("**Future Enhancements:**")
-    st.markdown("  *  Integration with electronic health record (EHR) systems for seamless data input and retrieval.")
-    st.markdown("  *  Development of a mobile app for on-the-go access to drug recommendations.")
-    st.markdown("  *  Expansion of the drug database to include a wider range of medications and conditions.")
-    st.markdown("  *  Implementation of a feedback mechanism to continuously improve the model's accuracy and effectiveness.")
+    st.markdown("""
+    * EHR integration  
+    * Mobile app development  
+    * Broader drug and condition coverage  
+    * Feedback-based model improvement
+    """)
 
     st.markdown("[GitHub Repository](https://github.com/harshaviyyuri/drug-recommendation)")
+
+    st.markdown("---")
+
+    # --- Project 2: Twitter Sentiment Analysis ---
+    st.subheader("Twitter Sentiment Analysis 🐦")
+    st.markdown("**Description:** A Streamlit app to analyze the sentiment of tweets based on user-defined queries using Hugging Face Transformers and Tweepy.")
+
+    query = st.text_input("Enter a Twitter search query:", "Python")
+    num_tweets = st.slider("Number of tweets to analyze:", 10, 200, 100)
+
+    if st.button("Analyze"):
+        sentiment_results = analyze_twitter_sentiment(query, num_tweets)
+
+        if "error" in sentiment_results:
+            st.error(sentiment_results["error"])
+        else:
+            st.write(f"**Number of tweets analyzed:** {sentiment_results['num_tweets']}")
+            sentiment_distribution = sentiment_results['sentiment_distribution']
+
+            st.markdown("**Sentiment Distribution:**")
+            st.write(f"😊 Positive: {sentiment_distribution['positive']:.2f}")
+            st.write(f"😞 Negative: {sentiment_distribution['negative']:.2f}")
+            st.write(f"😐 Neutral: {sentiment_distribution['neutral']:.2f}")
+
+            st.markdown("**Key Themes Identified:**")
+            st.write(sentiment_results["themes"])
+
+    st.markdown("**Technologies Used:** Python, Streamlit, Transformers, Tweepy, NLTK")
+    st.markdown("[GitHub Repository](https://github.com/harshaviyyuri/twitter-sentiment-analysis)")
+
 
 # Contact Tab
 with contact_tab:
@@ -325,31 +275,3 @@ with contact_tab:
                 # Here, you would typically send the message (e.g., via email)
             else:
                 st.error("Please fill in all fields.")
-
-with twitter_sentiment_tab:
-    st.header("Twitter Sentiment Analysis 🐦")
-    query = st.text_input("Enter a Twitter search query:", "Python")
-    num_tweets = st.slider("Number of tweets to analyze:", 10, 200, 100)
-
-    if st.button("Analyze"):
-        # Call the sentiment analysis function
-        sentiment_results = analyze_twitter_sentiment(query, num_tweets)
-
-        if "error" in sentiment_results:
-            st.error(sentiment_results["error"])
-        else:
-            # Display the results
-            st.subheader(f"Sentiment Analysis for '{query}'")
-            st.write(f"Number of tweets analyzed: {sentiment_results['num_tweets']}")
-
-            sentiment_distribution = sentiment_results['sentiment_distribution']
-            st.write("Sentiment Distribution:")
-            st.write(f"Positive: {sentiment_distribution['positive']:.2f}")
-            st.write(f"Negative: {sentiment_distribution['negative']:.2f}")
-            st.write(f"Neutral: {sentiment_distribution['neutral']:.2f}")
-
-            # Display individual tweet sentiments (optional)
-            # st.subheader("Individual Tweet Sentiments:")
-            # for result in sentiment_results['results']:
-            #     st.write(f"{result['label']}: {result['score']:.2f}")
-
